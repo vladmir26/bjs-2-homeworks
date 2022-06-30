@@ -9,21 +9,33 @@ function getArrayParams(arr) {
 
 // Задание 2
 function worker(arr) {
-  let sum;
+  let sum = 0;
 
-  // Ваш код
+
 
   return sum;
 }
 
 function makeWork(arrOfArr, func) {
-  let max;
+  let max = arrOfArr[0];
 
-  // Ваш кода
-  // for ...
+
+
+  for (func(arr) of arrOfArr) {
+    if (func(arr) > max) {
+      max = sum;
+  } 
+}
   
   return max;
 }
+
+
+
+
+
+
+
 
 // Задание 3
 function worker2(arr) {
