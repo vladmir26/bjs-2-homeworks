@@ -10,34 +10,26 @@ function getArrayParams(arr) {
 // Задание 2
 function worker(arr) {
   let sum = 0;
-  let max = arr[0];
-  let min = arr[0];
-  let avg;
 
-for (let i of arr) {
-  if (digit < min) {
-    min = digit;
-  }
-  if (digit > max) {
-    max = digit;
-  }
+  for (let i of arr) {
 
-  sum += digit;
+  sum += i;
 }
-
-avg = sum / arr.length;
-
   return sum;
 }
 
-worker([1, 2, 3]);
-worker([4, 5, 6]);
+
 let arrOfArr = [[1, 2, 3], [4, 5, 6]];
+
 function makeWork(arrOfArr, func) {
-  let max = arrOfArr[0];
-  for (func of arrOfArr) {
-    if (func > max) {
-      max = func;
+  let max = func(arrOfArr[0]);
+  
+
+  for (arr of arrOfArr) {
+    let sum = func(arr);
+    
+    if (sum > max) {
+      max = sum;
   } 
 }
   
@@ -46,12 +38,7 @@ function makeWork(arrOfArr, func) {
  makeWork(arrOfArr, worker)
 
 
-
-
-
-
-
-// Задание 3
+ // Задание 3
 function worker2(arr) {
   // Ваш код
 }
