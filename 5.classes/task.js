@@ -89,9 +89,11 @@ class Library {
 
   giveBookByName(bookName) {
     let foundBookName = this.books.find((book) => book.name === bookName);
+    let foundIndexBookName = this.books.findIndex((foundBookName) => foundBookName === bookName);
 
     if (foundBookName) {
-    return this.books.splice(foundBookName);
+      this.books.splice(foundIndexBookName, 1);
+      return foundBookName;
     } else {
       return null;
     }
