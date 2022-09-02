@@ -100,3 +100,16 @@ class Library {
     
   }
 }
+
+// Задача № 3 
+
+class Student {
+  constructor(name, gender, age) {
+    this.name = name;
+    this.gender = gender;
+    this.age = age;
+  }
+
+  
+
+}
