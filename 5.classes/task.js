@@ -147,10 +147,10 @@ getAverage() {
 
   for (let innerArray of allMarks) {
     let innerSum = 0;
-    for (let i of innerSum) {
+    for (let i of innerArray) {
       innerSum += i;
     }
-    let innerAvg = innerSum / innerSum.length;
+    let innerAvg = innerSum / innerArray.length;
     sum += innerAvg;
   }
 
