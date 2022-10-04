@@ -108,8 +108,78 @@ class Student {
     this.name = name;
     this.gender = gender;
     this.age = age;
+    this.journal = {};
+  }  
+
+setSubject(subjectName) {
+   this.subject = subjectName;
+}
+
+addMark(mark, subject) {
+  
+  if (mark < 1 || mark > 5) {
+    console.error('Ошибка');
+    return;
   }
+
+  if (this.journal[subject]) {
+    this.journal[subject].push(mark);
+  } else {
+    this.journal[subject] = [mark];
+  }
+
+} 
+
+addMarks(...marks) {
+  if (this.marks === undefined) {
+    this.marks = marks;
+  } else {
+    const combinedArray = this.marks.concat(marks);
+    this.marks = combinedArray;
+  }
+}
+
+getAverage() {
+
+  const allMarks = Object.values(this.journal);
+  
+  let sum = 0;
+
+  for (let innerArray of allMarks) {
+    let innerSum = 0;
+    for (let i of innerSum) {
+      innerSum += i;
+    }
+    let innerAvg = innerSum / innerSum.length;
+    sum += innerAvg;
+  }
+
+  let avg = sum / allMarks.length;
+
+  return avg;
+}
+
+getAverageBySubject(subject) {
+  let sum = 0;
+
+  for (let i of this.journal[subject]) {
+    sum += i;
+  }
+
+  let avg = sum / this.journal[subject].length;
+
+  return avg;
+}
+
+
+exclude(reason) {
+  delete this.subject;
+  delete this.marks;
+
+  this.excluded = reason;
+}
+
+}
 
   
 
-}
