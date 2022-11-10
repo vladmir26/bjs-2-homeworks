@@ -27,29 +27,47 @@ catch (e) {
 }
 } 
 
+
+
 // Задача №2 
 
 class Triangle {
     constructor (a, b, c) {
+     if ((a + b >= c) && (a + c >= b) && (b + c >= a)) {
+          throw new Error("Треугольник с такими сторонами не существует");
+     }
+     
      this.a = a;
      this.b = b;
      this.c = c;
-     this.firstSum = this.a + this.b;
-     this.secondSum = this.a + this.c;
-     this.thirdSum = this.b + this.c;
 }
 
 getPerimetr() {
      let perimetr = this.a + this.b + this.c;
-
-     if (this.firstsum < this.c) {
-          throw new Error("Треугольник с такими сторонами не существует");
-       }
-
      return perimetr;
 }
 
- 
-       
+getArea() {
+     let p = this.getPerimetr() / 2;
+     let area = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+     area = area.toFixed(3);
+     return area;
 }
+}
+
+function getTriangle(a, b, c) { 
+    try {
+       return new Triangle(a, b, c);
+    } catch(err) {
+        return {
+            getPerimetr() {
+                return 'Ошибка! Треугольник не существует';
+            }, 
+            getArea() {
+                return 'Ошибка! Треугольник не существует';
+            }
+        }
+    }
+}
+
 
