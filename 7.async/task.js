@@ -9,8 +9,8 @@ class AlarmClock {
           throw new Error('error text');
        }
 
-       if(this.alarmCollection[id]) {
-        console.error();
+       if(this.alarmCollection.findIndex((alarm)=> alarm.id)) {
+        console.error('');
         return;
        }
        else {
@@ -25,12 +25,13 @@ class AlarmClock {
     }
 
     removeClock(id) {
-     id = this.alarmCollection.filter((id) => this.alarmCollection.splice(id));
+    let alarmIndex = this.alarmCollection.findIndex((alarm) => alarm.id === id);
       
-      if(!id) {
+      if(!alarmIndex) {
             return false;
         }
         else {
+            this.alarmCollection.splice(alarmIndex, 1);
             return true;
         }
 
@@ -40,8 +41,14 @@ class AlarmClock {
      const date = new Date();
      const hours = date.getHours();
      const minutes = date.getMinutes();
-     const time = `${hours}:0${minutes}`;
 
+     if(minutes < 10) {
+     const time = `${hours}:0${minutes}`;
      return time;
+    }
+     else {
+        const time = `${hours}:${minutes}`;
+        return time;
+    }
     }
 }
