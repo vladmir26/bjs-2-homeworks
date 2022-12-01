@@ -9,25 +9,23 @@ class AlarmClock {
           throw new Error('error text');
        }
 
-       if(this.alarmCollection.findIndex((alarm)=> alarm.id)) {
-        console.error('');
-        return;
+       if(this.alarmCollection.findIndex((alarm)=> alarm.id) === -1) {
+            console.error('');
        }
        else {
-        let object = {
-            id,
-            time,
-            func,
+            let object = {
+              id,
+              time,
+              func,
+            }
+            this.alarmCollection.push(object);
         }
-       this.alarmCollection.push(object);
-        return;
-       }
     }
 
     removeClock(id) {
     let alarmIndex = this.alarmCollection.findIndex((alarm) => alarm.id === id);
       
-      if(!alarmIndex) {
+        if(alarmIndex === -1) {
             return false;
         }
         else {
@@ -38,17 +36,39 @@ class AlarmClock {
     }
 
     getCurrentFormattedTime() {
-     const date = new Date();
-     const hours = date.getHours();
-     const minutes = date.getMinutes();
+       const date = new Date();
+       const hours = date.getHours();
+       const minutes = date.getMinutes();
+       
+       let time = minutes < 10 ? `${hours}:0${minutes}` : `${hours}:${minutes}`;
+       return time;
+    }
 
-     if(minutes < 10) {
-     const time = `${hours}:0${minutes}`;
-     return time;
-    }
-     else {
-        const time = `${hours}:${minutes}`;
-        return time;
-    }
-    }
+    
+
+      checkClock({id, time, func}) {
+
+         if(time === this.getCurrentFormattedTime) {
+            func();
+        }
+      } 
+
+      start() { 
+          
+        if(this.timeId == null) {
+           this.timeId = setInterval(this.alarmCollection.forEach((alarm) => {
+                this.checkClock(alarm)
+            }), 5000);
+        }
+
+      }
+
+      stop() {
+          if(this.timeId === id) {
+            clearInterval(id);
+
+            this.timeId = null;
+          }
+      }
+
 }
