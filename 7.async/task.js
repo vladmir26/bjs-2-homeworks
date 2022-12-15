@@ -48,27 +48,39 @@ class AlarmClock {
 
       checkClock({id, time, func}) {
 
-         if(time === this.getCurrentFormattedTime) {
+         if(time === this.getCurrentFormattedTime()) {
             func();
         }
       } 
 
       start() { 
           
-        if(this.timeId == null) {
-           this.timeId = setInterval(this.alarmCollection.forEach((alarm) => {
-                this.checkClock(alarm)
-            }), 5000);
+        if(this.timeId) {
+           this.timeId = setInterval(() => {
+            this.alarmCollection.forEach((alarm) => {
+              this.checkClock(alarm)
+            })}, 60000);
         }
 
       }
 
       stop() {
-          if(this.timeId === id) {
-            clearInterval(id);
+          if(this.timeId) {
+            clearInterval(this.timeId);
 
             this.timeId = null;
           }
+      }
+
+      printAlarm() {
+         this.alarmCollection.forEach((alarm)=> {
+          console.log(alarm.id, alarm.time);
+         })
+      }
+
+      clearAlarms() {
+        clearInterval(this.timeId);
+        this.alarmCollection = [];
       }
 
 }
